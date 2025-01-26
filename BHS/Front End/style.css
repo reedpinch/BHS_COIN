@@ -1,0 +1,86 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #3b82f6, #9333ea);
+    color: #fff;
+}
+
+/* Layout */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+section {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2, h3, h4, h5 {
+    color: #60a5fa;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+button {
+    background-color: #4f46e5;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #2563eb;
+}
+
+/* Inputs */
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #4f46e5;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Password Section */
+#passwordSection {
+    text-align: center;
+}
+
+#passwordError {
+    color: #f87171;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Protected Actions */
+#protectedActions {
+    border-top: 2px solid #60a5fa;
+    padding-top: 20px;
+}

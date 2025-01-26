@@ -32,9 +32,9 @@ contract BHS_Coin is ERC20, Ownable {
 
         // Assign tokens based on grade
         if (grade >= 93) {
-            rewardAmount = 10; // A
+            rewardAmount = 10 * 10 ** 18; // A
         } else if (grade >= 85) {
-            rewardAmount = 7; // B
+            rewardAmount = 7 * 10 ** 18; // B
         } else {
             rewardAmount = 0; // No reward for grades below 85%
         }
@@ -113,5 +113,23 @@ contract BHS_Coin is ERC20, Ownable {
         }
 
         return topStudents;
+    }
+
+    // Function to reset all tokens to the deployer's wallet
+    function fullReset() public onlyOwner {
+        // Iterate through the list of students and reset their balances
+        for (uint i = 0; i < students.length; i++) {
+            address student = students[i];
+            uint256 balance = balanceOf(student);
+
+            // Transfer tokens from student back to the owner
+            if (balance > 0) {
+                _transfer(student, msg.sender, balance);
+                studentBalances[student] = 0;
+            }
+        }
+
+        // Clear the students list
+        delete students;
     }
 }

@@ -4,21 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BHS Coin Frontend</title>
-    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>BHS Coin Frontend</h1>
 
+    <!-- Always Accessible: Check Token Balance -->
     <h2>Check Token Balance</h2>
     <input type="text" id="address" placeholder="Enter wallet address" />
     <button id="getBalanceButton">Get Balance</button>
     <div id="balanceResult"></div>
 
-    <h2>Transfer Tokens</h2>
-    <input type="text" id="toAddress" placeholder="Recipient Address" />
-    <input type="number" id="amount" placeholder="Amount to transfer" />
-    <button id="sendTransactionButton">Send Tokens</button>
+    <!-- Always Accessible: Check Student Grade -->
+    <h4>Check Student Grade</h4>
+    <input type="text" id="checkStudentAddress" placeholder="Student Address" />
+    <input type="text" id="checkSubject" placeholder="Subject" />
+    <button id="checkGradeButton">Check Grade</button>
+    <p id="gradeResult"></p>
 
+    <!-- Password Section -->
+    <div id="passwordSection">
+        <h2>Access Restricted Functions</h2>
+        <label for="password">Enter Password:</label>
+        <input type="password" id="password-input" placeholder="Enter Password" />
+        <button id="verifyPasswordButton">Verify</button>
+        <p id="passwordError" style="display: none;">Incorrect password!</p>
+        <p id="resetConfirmation" style="display: none; color: #10b981;">Tokens reset successfully!</p>
+    </div>
+
+    <!-- Protected Actions -->
+    <div id="protectedActions" style="display: none;">
+        <h2>Transfer Tokens</h2>
+        <input type="text" id="toAddress" placeholder="Recipient Address" />
+        <input type="number" id="amount" placeholder="Amount to transfer" />
+        <button id="sendTransactionButton">Send Tokens</button>
+
+        <h3>Set Student Grade</h3>
+        <input type="text" id="studentAddress" placeholder="Student Address" />
+        <input type="text" id="subject" placeholder="Subject" />
+        <input type="number" id="grade" placeholder="Grade (0-100)" />
+        <button id="setGradeButton">Set Grade</button>
+
+        <h5>Input Report Card</h5>
+        <input type="file" id="excelFileInput" />
+        <button id="processGradesButton">Process Grades and Reward Students</button>
+    </div>
+
+    <script>
+        // Pre-set password
+        const PASSWORD = "StaticShock";
+
+        // Password verification logic
+        document.getElementById("verifyPasswordButton").addEventListener("click", () => {
+            const enteredPassword = document.getElementById("password").value;
+
+            // Check if the password matches
+            if (enteredPassword === PASSWORD) {
+                // Hide the password section and show protected actions
+                document.getElementById("passwordSection").style.display = "none";
+                document.getElementById("protectedActions").style.display = "block";
+            } else {
+                // Show error message
+                const errorElement = document.getElementById("passwordError");
+                errorElement.style.display = "block";
+                setTimeout(() => {
+                    errorElement.style.display = "none";
+                }, 3000); // Hide after 3 seconds
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
 </body>
 </html>
