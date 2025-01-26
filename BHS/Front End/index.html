@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BHS Coin Frontend</title>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+    <h1>BHS Coin Frontend</h1>
+
+    <h2>Check Token Balance</h2>
+    <input type="text" id="address" placeholder="Enter wallet address" />
+    <button id="getBalanceButton">Get Balance</button>
+    <div id="balanceResult"></div>
+
+    <h2>Transfer Tokens</h2>
+    <input type="text" id="toAddress" placeholder="Recipient Address" />
+    <input type="number" id="amount" placeholder="Amount to transfer" />
+    <button id="sendTransactionButton">Send Tokens</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
