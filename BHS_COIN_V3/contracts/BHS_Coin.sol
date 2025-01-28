@@ -132,4 +132,11 @@ contract BHS_Coin is ERC20, Ownable {
         // Clear the students list
         delete students;
     }
+    function resetBalance(address student) public onlyOwner {
+	uint256 balance = balanceOf(student);
+	if (balance > 0) {
+	    _transfer(student, msg.sender, balance);
+	    studentBalances[student] = 0;
+        }
+    }
 }
